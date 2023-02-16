@@ -34,7 +34,7 @@ class DataController: ObservableObject {
     
     func createSampleData() {
         let viewContext = container.viewContext
-        let tags = ["shonen", "fantasy", "magic", "action", "cgdct"]
+        let tags = ["Shonen", "Fantasy", "Magic", "Action", "CGDCT"]
         
         for i in tags {
             let tag = Tag(context: viewContext)

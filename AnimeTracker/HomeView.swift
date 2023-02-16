@@ -12,14 +12,14 @@ struct HomeView: View {
     let smartFilters: [Filter] = [.watching, .planToWatch]
     
     @FetchRequest(sortDescriptors:
-                     [SortDescriptor(\.watchStatus)]) var statuses: FetchedResults<Status>
+                     [SortDescriptor(\.title)]) var tags: FetchedResults<Tag>
     
-    var statusFilters: [Filter] {
-        statuses.map { status in
-            Filter(id: status.id ?? UUID(),
-                   name: status.watchStatus ?? "No Status",
+    var tagFilters: [Filter] {
+        tags.map { tag in
+            Filter(id: tag.id ?? UUID(),
+                   name: tag.title ?? "No Title",
                    icon: "tag",
-                   status: status)
+                   tag: tag)
         }
     }
     
@@ -32,8 +32,8 @@ struct HomeView: View {
                     }
                 }
             }
-            Section("Status") {
-                ForEach(statusFilters) { filter in
+            Section("Tags") {
+                ForEach(tagFilters) { filter in
                     NavigationLink(value: filter) {
                         Label(filter.name, systemImage: filter.icon)
                     }

@@ -11,7 +11,7 @@ struct Filter: Identifiable, Hashable {
     var id: UUID
     var name: String
     var icon: String
-    var status: Status?
+    var tag: Tag?
     
     static var watching = Filter(id: UUID(), name: "Currently Watching", icon: "sparkles.tv")
     static var planToWatch = Filter(id: UUID(), name: "Plan to Watch", icon: "list.star")

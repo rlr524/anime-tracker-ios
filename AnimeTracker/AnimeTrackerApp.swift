@@ -13,9 +13,15 @@ struct AnimeTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
-                .environmentObject(dataController)
+            NavigationSplitView {
+                HomeView()
+            } content: {
+                ContentView()
+            } detail: {
+                DetailView()
+            }
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
         }
     }
 }

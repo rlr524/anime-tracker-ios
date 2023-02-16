@@ -10,6 +10,8 @@ import CoreData
 class DataController: ObservableObject {
     let container: NSPersistentCloudKitContainer
     
+    @Published var selectedFilter: Filter? = Filter.watching
+    
     static var preview: DataController = {
         let dataController = DataController(inMemory: true)
         dataController.createSampleData()
@@ -32,11 +34,12 @@ class DataController: ObservableObject {
     
     func createSampleData() {
         let viewContext = container.viewContext
+        let tags = ["shonen", "fantasy", "magic", "action", "cgdct"]
         
-        for i in 1...5 {
+        for i in tags {
             let tag = Tag(context: viewContext)
             tag.id = UUID()
-            tag.title = "Tag \(i)"
+            tag.title = "\(i)"
             
             for j in 1...10 {
                 let anime = Anime(context: viewContext)
@@ -49,6 +52,7 @@ class DataController: ObservableObject {
                 for k in 1...10 {
                     let status = Status(context: viewContext)
                     status.id = UUID()
+                    status.watchStatus = "watching"
                     status.rating = Int16.random(in: 0...9)
                     status.notes = "Notes for status \(k)"
                     status.dateCreated = Date.now

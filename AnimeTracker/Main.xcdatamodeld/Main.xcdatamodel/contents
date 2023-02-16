@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Anime" representedClassName="Anime" syncable="YES" codeGenerationType="class">
+        <attribute name="cour" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
+        <attribute name="descShort" optional="YES" attributeType="String"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="mainImage" optional="YES" attributeType="URI"/>
+        <attribute name="season" optional="YES" attributeType="String"/>
+        <attribute name="service" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="anime" inverseEntity="Status"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="animes" inverseEntity="Tag"/>
+    </entity>
+    <entity name="Status" representedClassName="Status" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateFinished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateStarted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="watchStatus" optional="YES" attributeType="String"/>
+        <relationship name="anime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anime" inverseName="statuses" inverseEntity="Anime"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="animes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Anime" inverseName="tags" inverseEntity="Anime"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" derived="YES" derivationExpression="now()" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="mobile" optional="YES" attributeType="String"/>
+        <attribute name="profileImage" optional="YES" attributeType="URI"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="user" inverseEntity="Status"/>
+    </entity>
+</model>

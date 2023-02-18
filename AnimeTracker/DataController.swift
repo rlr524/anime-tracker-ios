@@ -45,6 +45,7 @@ class DataController: ObservableObject {
                 let anime = Anime(context: viewContext)
                 anime.id = UUID()
                 anime.title = "Anime \(j)"
+                anime.averageRating = Float.random(in: 5.0...9.9)
                 anime.descShort = "Short description here"
                 anime.dateCreated = Date.now
                 tag.addToAnimes(anime)

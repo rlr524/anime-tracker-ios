@@ -16,8 +16,8 @@ struct HomeView: View {
     
     var tagFilters: [Filter] {
         tags.map { tag in
-            Filter(id: tag.id ?? UUID(),
-                   name: tag.title ?? "No Title",
+            Filter(id: tag.tagID,
+                   name: tag.tagTitle,
                    icon: "tag",
                    tag: tag)
         }
@@ -36,6 +36,7 @@ struct HomeView: View {
                 ForEach(tagFilters) { filter in
                     NavigationLink(value: filter) {
                         Label(filter.name, systemImage: filter.icon)
+                            .badge(filter.tag?.tagTopAnime.count ?? 0)
                     }
                 }
             }

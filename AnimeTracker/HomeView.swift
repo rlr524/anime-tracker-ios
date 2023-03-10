@@ -16,7 +16,7 @@ struct HomeView: View {
     
     var tagFilters: [Filter] {
         tags.map { tag in
-            Filter(id: tag.tagID,
+            Filter(id: tag.tagId,
                    name: tag.tagTitle,
                    icon: "tag",
                    tag: tag)

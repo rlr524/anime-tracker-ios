@@ -10,7 +10,7 @@ import Foundation
 // Not doing getters and setters on tags as tags have no view reactivity,
 // they are simply read and written.
 extension Tag {
-    var tagID: UUID {
+    var tagId: UUID {
         id ?? UUID()
     }
     
@@ -22,7 +22,7 @@ extension Tag {
         dateCreated ?? Date.now
     }
     
-    var tagDateUpdate: Date {
+    var tagDateUpdated: Date {
         dateUpdated ?? Date.now
     }
     
@@ -48,7 +48,7 @@ extension Tag: Comparable {
         let right = rhs.tagTitle.localizedLowercase
         
         if left == right {
-            return lhs.tagID.uuidString < rhs.tagID.uuidString
+            return lhs.tagId.uuidString < rhs.tagId.uuidString
         } else {
             return left < right
         }
